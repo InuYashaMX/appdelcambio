@@ -1,0 +1,18 @@
+<div ng-repeat="item in ultimo" style="max-width: 400px">
+    <md-card>
+        <img ng-src="{{item.photo}}" class="md-card-image" alt="{{item.nivel}}">
+        <md-card-content>
+            <p>
+                <h1>{{item.nivel}} </h1>
+            </p>
+            <p>
+                {{item.comments}}
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="Share" ng-href="#/{{map}}?lat={{item.lat}}&lng={{item.lng}}&zoom=19">
+                <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>

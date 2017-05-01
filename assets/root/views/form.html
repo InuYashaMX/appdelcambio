@@ -1,0 +1,63 @@
+<md-dialog aria-label="New" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Nuevo</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeDialog()">
+                <md-icon md-font-set="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        
+        <div layout="row" layout-align="center center">
+            <md-progress-circular ng-show="uploading" class="md-hue-2" md-diameter="150px"></md-progress-circular>
+        </div>
+        
+        <div class="md-dialog-content" layout="column" ng-hide="uploading">
+            <md-input-container>
+                <label>Categoria</label>
+                <md-select ng-model="marker.type">
+                    <md-option ng-value="item.id" ng-repeat="item in categorias">{{ item.value }}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <choose-file layout="row">
+
+                <input id="fileInput" type="file" class="ng-hide" ng-model="marker.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'">
+
+                <md-input-container flex class="md-block">
+                    <input type="text" ng-model="marker.fileName" aria-label="fileName" disabled>
+                </md-input-container>
+
+                <div>
+                    <md-button id="uploadButton" class="md-fab md-mini">
+                        <md-icon class="material-icons">attach_file</md-icon>
+                    </md-button>
+                </div>
+
+            </choose-file>
+
+            <md-input-container>
+                <label>Nivel</label>
+                <md-select ng-model="marker.nivel">
+                    <md-option ng-value="nivel" ng-repeat="nivel in niveles">{{ nivel }}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Referencia</label>
+                <input type="text" ng-model="marker.referencia" required>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Descripcion</label>
+                <textarea type="text" ng-model="marker.comments" md-maxlength="400" rows="3" md-select-on-focus></textarea>
+            </md-input-container>
+            
+             <div>
+                <md-button class="md-raised md-accent md-warn" ng-click="save(marker)">Guardar</md-button>
+             </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,118 @@
+<style>
+    .box-blanco {
+        background: #FFFFFF;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 16px;
+        border-radius: 3px;
+        background-clip: padding-box;
+        padding: 5px;
+    }
+</style>
+
+<div class="md-padding" style="background-color: #F9F9F9; max-width: 800px; margin: 0 auto;">
+    <h1 style="color: #283593;">Reportes</h1>
+    <div class="box-blanco">
+        <div layout="row" layout-align="start center">
+            <md-button class="md-accent md-raised" ng-click="setDiario()">DIARIO</md-button>
+            <md-button class="md-accent md-raised" ng-click="setSemanal()">SEMANAL</md-button>
+            <md-button class="md-accent md-raised" ng-click="setMensual()">MENSUAL</md-button>
+        </div>
+        <h4 style="color: #cccccc; text-align: center;">{{titulo}}</h4>
+        <canvas width="100%" height="80" id="bar" class="chart chart-line" chart-data="lines.data" chart-labels="lines.labels" chart-series="lines.series" chart-colors="lines.colors" chart-options="lines.options"></canvas>
+
+    </div>
+
+    <div layout="row" style="background-color: #7FC8BA; padding: 15px; color: white; margin-bottom: 20px;">
+        <div layout="column" layout-align="center center" flex>
+            <div style="font-size: 40px;">{{pendientesNum}}/{{reparadosNum}}</div>
+            <div style="font-size: 15px; text-align: center;">Pendientes contra Reparados</div>
+        </div>
+        <div flex>
+            <canvas width="100" height="100" id="doughnut" class="chart chart-doughnut" chart-data="doughnut.data" chart-labels="doughnut.labels" chart-colors="doughnut.colors" chart-options="doughnut.options" chart-dataset-override="doughnut.override"></canvas>
+        </div>
+    </div>
+
+    <div class="box-blanco">
+        <h1 style="color: #283593;">Ultimos reportados</h1>
+        <md-tabs md-dynamic-height>
+            <md-tab>
+                <md-tab-label layout="row">
+                    REPORTADOS
+                    <md-badge>{{reportados.length}}</md-badge>
+                </md-tab-label>
+                <md-tab-body style="height: 600px;">
+                    <div ng-repeat="item in reportados | orderObjectBy: ordered:true" ng-click="goLink(item)" layout="row">
+                        <div flex>
+                            <img class="md-padding" src="{{item.photo}}" width="100%" height="150">
+                        </div>
+                        <div flex class="md-padding">
+                            <div class="md-padding"><b>{{item.comments}}</b></div>
+                            <div layout="row" class="md-padding">
+                                <div class="md-nivel">{{item.nivel}}</div>
+                                <div layout="row" class="voteIcons">
+                                    <i class="material-icons">thumb_up</i>
+                                    <div style="margin-right: 10px;">{{item.voteUp}}</div>
+                                    <i class="material-icons">thumb_down</i>
+                                    <div>{{item.voteUp}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+            <md-tab>
+                <md-tab-label layout="row">
+                    EN REPARACION
+                    <md-badge>{{reparacion.length}}</md-badge>
+                </md-tab-label>
+                <md-tab-body>
+
+                    <div ng-repeat="item in reparacion | orderObjectBy: ordered:true" ng-click="goLink(item)" layout="row">
+                        <div flex>
+                            <img class="md-padding" src="{{item.photo}}" width="100%" height="150">
+                        </div>
+                        <div flex class="md-padding">
+                            <div class="md-padding"><b>{{item.comments}}</b></div>
+                            <div layout="row" class="md-padding">
+                                <div class="md-nivel">{{item.nivel}}</div>
+                                <div layout="row" class="voteIcons">
+                                    <i class="material-icons">thumb_up</i>
+                                    <div style="margin-right: 10px;">{{item.voteUp}}</div>
+                                    <i class="material-icons">thumb_down</i>
+                                    <div>{{item.voteUp}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+            <md-tab>
+                <md-tab-label layout="row">
+                    REPARADOS
+                    <md-badge>{{reparados.length}}</md-badge>
+                </md-tab-label>
+                <md-tab-body>
+                    <div ng-repeat="item in reparados | orderObjectBy: ordered:true" ng-click="goLink(item)" layout="row">
+                        <div flex>
+                            <img class="md-padding" src="{{item.photo}}" width="100%" height="150">
+                        </div>
+                        <div flex class="md-padding">
+                            <div class="md-padding"><b>{{item.comments}}</b></div>
+                            <div layout="row" class="md-padding">
+                                <div class="md-nivel">{{item.nivel}}</div>
+                                <div layout="row" class="voteIcons">
+                                    <i class="material-icons">thumb_up</i>
+                                    <div style="margin-right: 10px;">{{item.voteUp}}</div>
+                                    <i class="material-icons">thumb_down</i>
+                                    <div>{{item.voteUp}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </div>
+     <div id="fb-comment-box" data-width="100%" dyn-fb-comment-box page-href="https://{{F.dominio}}/reportes" numposts="5" colorscheme="light">
+    </div>
+</div>

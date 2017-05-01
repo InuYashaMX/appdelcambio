@@ -1,0 +1,44 @@
+<div flex layout="column" layout-align="center center">
+    <form name="newForm">
+        <div layout="column">
+
+            <md-radio-group ng-model="user.team" layout="row" class="md-padding">
+                <md-radio-button value="Ciudadano" ng-click="showIdentificacion=false" checked><span class="red">Ciudadano</span></md-radio-button>
+                <md-radio-button value="FuncionarioPendiente" ng-click="showIdentificacion=true"><span class="blue">Funcionario</span></md-radio-button>
+            </md-radio-group>
+
+            <md-input-container>
+                <md-icon md-font-set="material-icons">accessibility</md-icon>
+                <input type="text" name="displayName" ng-model="user.displayName" placeholder="Nombre completo" required md-maxlength="55">
+            </md-input-container>
+
+            <md-input-container>
+                <md-icon md-font-set="material-icons">person</md-icon>
+                <input type="text" name="trainer" ng-model="user.trainer" placeholder="Nombre de usuario" pattern="[A-Za-z0-9\S]{1,25}" required md-maxlength="25" trainer-availability-validator>
+                <div ng-messages="newForm.trainer.$error">
+                    <div ng-message="recordLoading">Comprobando...</div>
+                    <div ng-message="recordAvailable">Este nombre de usuario esta en uso...</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <md-icon md-font-set="material-icons">phone</md-icon>
+                <input type="text" name="phone" ng-model="user.phone" placeholder="Telefono" required md-maxlength="15" pattern="[1-9][0-9]*|0">
+            </md-input-container>
+
+            <div ng-if="user.photo" style="text-align: center; margin-bottom: 20px;">
+                <div><a ng-click="delete(user)"><i class="material-icons">delete</i> Eliminar imagen</a></div>
+                <div><img src="{{user.photo}}" width="200"/></div>
+            </div>
+
+            <div ng-if="showIdentificacion && !user.photo" style="text-align: center; margin-bottom: 20px;">
+                <p>Para funcionario se requiere una identificacion scaneada</p>
+                <a href="#" ng-model="user.file" ngf-select="upload(user)" name="user.file" ngf-pattern="'image/*'" ngf-accept="'image/*'"><i class="material-icons">attach_file</i> SUBIR IDENTIFICACION</a>
+            </div>
+
+            <md-button class="white-color md-raised md-primary" ng-click="saveTrainer(user)" ng-disabled="checkForm(user)">
+                Guardar
+            </md-button>
+        </div>
+    </form>
+</div>

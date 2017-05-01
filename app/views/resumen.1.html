@@ -1,0 +1,158 @@
+<h2>HISTORIAL</h2>
+
+<md-tabs>
+    <md-tab>
+        <md-tab-label layout="row">
+            REPORTADOS
+            <md-badge>{{reportados.length}}</md-badge>
+        </md-tab-label>
+        <md-tab-body>
+
+            <table class="mytable" CELLSPACING=0>
+                <tbody>
+                    <tr ng-repeat="item in reportados">
+                        <td><img src="{{item.photo}}" width="40" height="40"></td>
+                        <td>
+                            <div>{{item.nivel}}</div>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-click="pokeVoteUp(pokemonInfo)">
+                                <md-tooltip md-direction="left">Confirmado</md-tooltip>
+                                <md-icon class="material-icons">thumb_up</md-icon>
+                                <md-badge class="md-warn">{{item.voteUp}}</md-badge>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-click="pokeVoteUp(pokemonInfo)">
+                                <md-tooltip md-direction="left">No confirmado</md-tooltip>
+                                <md-icon class="material-icons">thumb_down</md-icon>
+                                <md-badge class="md-warn">{{item.voteDown}}</md-badge>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-href="#/{{map}}?lat={{item.lat}}&lng={{item.lng}}&zoom=19">Ver en Mapa</md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-tab-body>
+    </md-tab>
+    <md-tab>
+        <md-tab-label layout="row">
+            EN REPARACION
+            <md-badge>{{reparacion.length}}</md-badge>
+        </md-tab-label>
+        <md-tab-body>
+
+            <table class="mytable" CELLSPACING=0>
+                <tbody>
+                    <tr ng-repeat="item in reparacion">
+                        <td><img src="{{item.photo}}" width="40" height="40"></td>
+                        <td>
+                            <div>{{item.nivel}}</div>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-click="pokeVoteUp(pokemonInfo)">
+                                <md-tooltip md-direction="left">Confirmado</md-tooltip>
+                                <md-icon class="material-icons">thumb_up</md-icon>
+                                <md-badge class="md-warn">{{item.voteUp}}</md-badge>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-click="pokeVoteUp(pokemonInfo)">
+                                <md-tooltip md-direction="left">No confirmado</md-tooltip>
+                                <md-icon class="material-icons">thumb_down</md-icon>
+                                <md-badge class="md-warn">{{item.voteDown}}</md-badge>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-href="#/{{map}}?lat={{item.lat}}&lng={{item.lng}}&zoom=19">Ver en Mapa</md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-tab-body>
+    </md-tab>
+    <md-tab>
+        <md-tab-label layout="row">
+            REPARADOS
+            <md-badge>{{reparados.length}}</md-badge>
+        </md-tab-label>
+        <md-tab-body>
+
+            <table class="mytable" CELLSPACING=0>
+                <tbody>
+                    <tr ng-repeat="item in reparados">
+                        <td><img src="{{item.photo}}" width="40" height="40"></td>
+                        <td>
+                            <div>{{item.nivel}}</div>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-click="pokeVoteUp(pokemonInfo)">
+                                <md-tooltip md-direction="left">Confirmado</md-tooltip>
+                                <md-icon class="material-icons">thumb_up</md-icon>
+                                <md-badge class="md-warn">{{item.voteUp}}</md-badge>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-click="pokeVoteUp(pokemonInfo)">
+                                <md-tooltip md-direction="left">No confirmado</md-tooltip>
+                                <md-icon class="material-icons">thumb_down</md-icon>
+                                <md-badge class="md-warn">{{item.voteDown}}</md-badge>
+                            </md-button>
+                        </td>
+                        <td>
+                            <md-button class="md-primary" ng-href="#/{{map}}?lat={{item.lat}}&lng={{item.lng}}&zoom=19">Ver en Mapa</md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-tab-body>
+    </md-tab>
+    <md-tab>
+        <md-tab-label layout="row">
+            RANKING CIUDADANOS
+            <md-badge>{{ciudadanos.length}}</md-badge>
+        </md-tab-label>
+        <md-tab-body>
+            <table class="mytable" CELLSPACING=0>
+                <tbody>
+                    <tr ng-repeat="item in ciudadanos">
+                        <td>
+                            <img src="{{item.photoURL}}" width="40" height="40">
+                        </td>
+                        <td>
+                            {{item.displayName}}
+                        </td>
+                        <td>
+                            {{item.baches}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-tab-body>
+    </md-tab>
+    <md-tab>
+        <md-tab-label layout="row">
+            RANKING FUNCIONARIO
+            <md-badge>{{funcionarios.length}}</md-badge>
+        </md-tab-label>
+        <md-tab-body>
+            <table class="mytable" CELLSPACING=0>
+                <tbody>
+                    <tr ng-repeat="item in funcionarios">
+                        <td>
+                            <img src="{{item.photoURL}}" width="40" height="40">
+                        </td>
+                        <td>
+                            {{item.displayName}}
+                        </td>
+                        <td>
+                            {{item.bachesReparados}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-tab-body>
+    </md-tab>
+</md-tabs>

@@ -1,0 +1,49 @@
+<div class="md-padding" style="max-width: 800px; margin: 0 auto;">
+
+    <div ng-repeat="item in ultimo">
+        <img src="{{item.photo}}" width="100%" />
+        <div class="titulo-ultimo">Ultimo reporte</div>
+        <div class="list-comments">{{item.comments}}</div>
+
+        <div layout="row" class="voteIcons">
+            <i class="material-icons">thumb_up</i>
+            <div>{{item.voteUp}}</div>
+            <span style="margin-right: 30px;">Confirmados</span>
+            <i class="material-icons">thumb_down</i>
+            <div>{{item.voteUp}}</div>
+            <span>No confirmados</span>
+        </div>
+    </div>
+
+    <br>
+
+    <md-divider></md-divider>
+
+    <div layout="row"  layout-align="end start">
+        <md-input-container>
+            <label>Ordernar por</label>
+            <md-select ng-model="ordered">
+                <md-option ng-value="nivelId">Tamaño</md-option>
+                <md-option ng-value="voteUp">Confirmados</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <div ng-repeat="item in baches | orderObjectBy: ordered:true" ng-click="goLink(item)" layout="row" class="md-padding">
+        <div flex>
+            <img src="{{item.photo}}" width="100%" height="150">
+        </div>
+        <div flex class="md-padding">
+            <div><b>{{item.comments}}</b></div>
+            <div layout="row" class="md-padding">
+                <div class="md-nivel">{{item.nivel}}</div>
+                <div layout="row" class="voteIcons">
+                    <i class="material-icons">thumb_up</i>
+                    <div style="margin-right: 10px;">{{item.voteUp}}</div>
+                    <i class="material-icons">thumb_down</i>
+                    <div>{{item.voteUp}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

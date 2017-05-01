@@ -1,0 +1,57 @@
+<div class="md-padding" style="max-width: 800px; margin: 0 auto; cursor: pointer;">
+    <md-tabs md-dynamic-height>
+        <md-tab>
+            <md-tab-label layout="row">
+                CIUDADANOS
+                <md-badge>{{ciudadanos.length}}</md-badge>
+            </md-tab-label>
+            <md-tab-body>
+                <div layout="row" ng-repeat="profile in ciudadanos" class="md-padding" ng-click="goProfile(profile.key)">
+                    <img src="{{profile.photoURL | imageAvatar }}" width="100" height="100" />
+                    <div class="column" style="margin-left: 10px;">
+                        <div class="name">{{profile.displayName}}</div>
+                        <div layout="row" layout-align="start center" class="subdatos">
+                            <i class="material-icons">mail</i>
+                            <div>{{profile.email}}</div>
+                            <i class="material-icons">phone</i>
+                            <div>{{profile.phone}}</div>
+                        </div>
+                        <div layout="row">
+                            <div class="reputacion">{{profile.reputacion}}</div>
+                            <div class="stars">
+                                <div star-rating rating-value="profile.reputacion" max="5"></div>
+                                <div class="startext">REPUTACION</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+        <md-tab>
+            <md-tab-label layout="row">
+                FUNCIONARIOS
+                <md-badge>{{funcionarios.length}}</md-badge>
+            </md-tab-label>
+            <md-tab-body>
+                <div layout="row" ng-repeat="profile in funcionarios" class="md-padding" ng-click="goProfile(profile.key)">
+                    <img src="{{profile.photoURL | imageAvatar }}" width="100" height="100" />
+                    <div class="column" style="margin-left: 10px;">
+                        <div class="name">{{profile.displayName}}</div>
+                        <div layout="row" layout-align="start center" class="subdatos">
+                            <i class="material-icons">mail</i>
+                            <div>{{profile.email}}</div>
+                            <i class="material-icons">phone</i>
+                            <div>{{profile.phone}}</div>
+                        </div>
+                        <div layout="row">
+                            <div class="reputacion">{{profile.total}}</div>
+                            <div class="stars">
+                                <div class="startext">REPARADOS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

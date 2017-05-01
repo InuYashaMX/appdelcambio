@@ -1,0 +1,18 @@
+<div layout="row" ng-repeat="(index,profile) in funcionarios" class="md-padding" style="max-width: 800px; margin: 0 auto;">
+    <img src="{{profile.photoURL | imageAvatar }}" width="100" height="100" />
+    <div class="column" style="margin-left: 10px;">
+        <div class="name">{{profile.displayName}}</div>
+        <div layout="row" layout-align="start center" class="subdatos">
+            <i class="material-icons">mail</i>
+            <div>{{profile.email}}</div>
+            <i class="material-icons">phone</i>
+            <div>{{profile.phone}}</div>
+        </div>
+        <div layout="row">
+            <md-button class="md-accent md-raised" ng-click="changeTeam('Funcionario',index)">Activar</md-button>
+            <md-button class="md-primary" ng-click="changeTeam('Ciudadano', index)">Rechazar</md-button>
+        </div>
+        
+        <a href="{{profile.photo}}">Ver identificacion</a>
+    </div>
+</div>
