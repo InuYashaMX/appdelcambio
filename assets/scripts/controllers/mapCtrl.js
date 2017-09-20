@@ -42,7 +42,8 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
         snapshot.forEach(function(child) {
             $scope.categorias.push({
                 id: child.key,
-                value: child.val().descripcion
+                value: child.val().descripcion,
+                icono: child.val().icono
             });
         });
         $timeout(function() {});
@@ -152,7 +153,7 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
         $scope.Info.pokemonLocation = marker.lat + ',' + marker.lng;
         $scope.Info.mediaUrl = $scope.createUrlShare(marker.lat + ',' + marker.lng, marker.photo, 16);
         $scope.Info.shareUrl = 'https://appdelcambio.com/#/' + $scope.city + '?lat=' + marker.lat + '&lng=' + marker.lng + '&zoom=19';
-        $scope.Info.shareText = "Existe un bache aqui!";
+        $scope.Info.shareText = "Existe un item aqui!";
         $scope.vm.map.showInfoWindow('InfoWindow', this);
     };
 
@@ -264,14 +265,14 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
     }
 
     $scope.addMarker = function(e) {
-        if (typeof F.user.key !== "undefined") {
+        //if (typeof F.user.key !== "undefined") {
             if ($scope.markerType !== false) {
                 var marker = {
                     lat: e.latLng.lat(),
                     lng: e.latLng.lng(),
                     user: F.user.trainer,
                     team: F.user.team,
-                    userId: F.user.key,
+                    //userId: F.user.key,
                     type: $scope.markerType,
                     autorizado: false,
                     photoReparado: false,
@@ -282,10 +283,10 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
                 };
                 $scope.renderForm(marker);
             }
-        }
+        /*}
         else {
             F.getUser();
-        }
+        }*/
 
     }
 
@@ -332,7 +333,7 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
 
     $scope.save = function(marker) {
 
-        if (typeof F.user.key !== "undefined") {
+        //if (typeof F.user.key !== "undefined") {
 
             switch (marker.nivel) {
                 case 'Chico':
@@ -426,10 +427,10 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
                     });
                 }
             }
-        }
+        /*}
         else {
             F.getUser();
-        }
+        }*/
 
     };
 
@@ -478,16 +479,11 @@ angular.module("myApp").controller("mapCtrl", ['$scope', 'F', 'NgMap', '$timeout
 
     var initPosition = function() {
         $scope.center = {};
-        /*if (typeof $routeParams.lat === 'undefined' && typeof $routeParams.lng === 'undefined') {
-            $scope.center.lat = F.position.coords.latitude;
-            $scope.center.lng = F.position.coords.longitude;
-            $scope.center.zoom = 14;
-        }
-        else {*/
+        
             $scope.center.lat = $routeParams.lat;
             $scope.center.lng = $routeParams.lng;
             $scope.center.zoom = $routeParams.zoom;
-        /*}*/
+       
     }
 
     var initLoggedIn = function() {

@@ -129,28 +129,10 @@
                     <md-icon md-svg-src="./img/icons/google/ic_add_white_24px.svg"></md-icon>
                 </md-button>
             </md-fab-trigger>
-
-            <md-fab-actions>
-                <md-button aria-label="addBache" style="background: url('./img/icons/baches/Icono_Baches.svg') center center;" ng-class="markerType == 'baches' ? 'md-fab md-mini md-accent' : 'md-fab md-mini md-raised'" ng-click="setMarkerType('baches')">
-                      <md-tooltip md-direction="left">Bache</md-tooltip> 
-                </md-button>
-            </md-fab-actions>
-
-            <md-fab-actions>
-                <md-button aria-label="addBache" style="background: url('./img/icons/baches/Icono_Alumbrado.svg') center center;" ng-class="markerType == 'alumbrado' ? 'md-fab md-mini md-accent' : 'md-fab md-mini md-raised'" ng-click="setMarkerType('alumbrado')">
-                     <md-tooltip md-direction="left">Alumbrado</md-tooltip>  
-                </md-button>
-            </md-fab-actions>
-
-            <md-fab-actions>
-                <md-button aria-label="addBache" style="background: url('./img/icons/baches/Icono_Inseguridad.svg') center center;" ng-class="markerType == 'inseguridad' ? 'md-fab md-mini md-accent' : 'md-fab md-mini md-raised'" ng-click="setMarkerType('inseguridad')">
-                    <md-tooltip md-direction="left">Inseguridad</md-tooltip>   
-                </md-button>
-            </md-fab-actions>
-
-            <md-fab-actions>
-                <md-button aria-label="addBache" style="background: url('./img/icons/baches/Icono_Inundaciones.svg') center center;" ng-class="markerType == 'inundaciones' ? 'md-fab md-mini md-accent' : 'md-fab md-mini md-raised'" ng-click="setMarkerType('inundaciones')">
-                    <md-tooltip md-direction="left">Inundaciones</md-tooltip>
+            
+            <md-fab-actions ng-repeat="item in categorias">
+                <md-button aria-label="addBCamino" style="background: #FFFFFF url('./img/icons/baches/{{item.icono}}') center center no-repeat; background-size: 30px 30px;" ng-class="markerType == 'item.id' ? 'md-fab md-mini md-accent' : 'md-fab md-mini md-raised'" ng-click="setMarkerType('item.id')">
+                      <md-tooltip md-direction="left">{{item.value}}</md-tooltip> 
                 </md-button>
             </md-fab-actions>
 
