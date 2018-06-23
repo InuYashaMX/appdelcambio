@@ -1,9 +1,10 @@
 <html lang="en">
 <head>
-    <title>Juntos cambiemos Cancun</title>
+    <title>Ayuda para el sismo de la CDMX</title>
     
-    <base href="/baches/app/"> 
-
+    <base href="/baches/app/">
+    
+    
     <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
@@ -103,14 +104,14 @@
 
             <md-divider></md-divider>
 
-            <md-menu-item>
+            <!--<md-menu-item>
                 <md-button href="#/proximamente" ng-click="closeNav()">
                     <md-icon md-font-set="material-icons">list</md-icon>
                     Proximamente
                 </md-button>
             </md-menu-item>
 
-            <md-divider></md-divider>
+            <md-divider></md-divider>-->
 
             <md-menu-item>
                 <md-button href="#/cancun/funcionarios" ng-click="closeNav()">
@@ -147,15 +148,16 @@
                         <md-icon md-font-set="material-icons" style="color: white;">menu</md-icon>
                     </md-button>
 
-                    <span flex></span>
+                    <span flex>Ayuda para el sismo de la CDMX</span>
 
                      <span ng-click="F.getUser()" ng-if="!F.user.trainer">Login</span>
+                     
+                     <span>{{F.user.trainer}}</span>
+                     
                         
-                    <span><a href="#/profile/{{F.user.key}}">{{F.user.trainer}}</a></span>
+                    <!--<span><a href="#/profile/{{F.user.key}}">{{F.user.trainer}}</a></span>-->
 
                     <span layout="row" layout-align="center center"><i class="material-icons">person</i> {{users}}</span>
-
-                   
 
                 </div>
             </md-toolbar>

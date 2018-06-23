@@ -38,7 +38,7 @@ angular.module("myApp").controller("toolbarCtrl", ['$rootScope', '$scope', 'F', 
                 .parent(angular.element(document.querySelector('#popupContainer')))
                 .clickOutsideToClose(true)
                 .title('Disconnected')
-                .textContent('Tu cuenta ha sido desconectada')
+                .textContent('Tu c')
                 .ariaLabel('Disconnect')
                 .ok('Ok')
                 .targetEvent(ev)
